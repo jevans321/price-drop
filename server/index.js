@@ -1,12 +1,15 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var vo = require('vo');
-var ds = require('./data-scrape');
+const express = require('express');
+const bodyParser = require('body-parser');
+const expressMongoDb = require('express-mongo-db');
+const port = process.env.PORT || 3000;
+const app = express();
+const vo = require('vo');
+const ds = require('./data-scrape');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
+const items = require('../database-mysql');
+// const items = require('../database-mongo');
 
-var app = express();
+app.use(expressMongoDb('mongodb://localhost/pricedrop'));
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));

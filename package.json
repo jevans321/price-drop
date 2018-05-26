@@ -19,13 +19,15 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
+    "express-mongo-db": "^2.0.4",
+    "fs": "0.0.1-security",
     "jquery": "^3.1.1",
+    "knex": "^0.14.6",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
+    "nightmare": "^3.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "fs": "0.0.1-security",
-    "nightmare": "^2.10.0",
     "vo": "^4.0.2"
   }
 }
