@@ -13,6 +13,17 @@ function modelExists(modelParam) {
   //let inner = `SELECT EXISTS(SELECT models.id FROM models WHERE models.model = ${modelParam})`;
   return knex.raw(inner)
   .wrap('select exists (', ')')
+  .then((knexResponse) => {
+    // console.log('knexResponse variable: ', knexResponse);
+    let exists = knexResponse[0][0][knexResponse[1][0].name];
+    // console.log('Exists variable: ', exists);
+    if(exists) {
+      // return id object
+      return inner;
+    } else {
+      return false;
+    }
+  })
   .catch(err => {
     console.log('Error: ', err);
   });
@@ -34,11 +45,11 @@ function addModel(modelParam, titleParam, imageParam) {
 
 /* Insert price into 'prices' table */
 // Return success notification
-function addPrice(modelIdParam, priceParam) {
+function addPrice(modelNameParam, priceParam, flagParam) {
   // console.log('3: inside addPrice');
   return knex('prices')
-  .returning(['id', 'model_id', 'price', 'date'])
-  .insert({model_id: knex('models').where({model: modelIdParam}).select('models.id'), price: priceParam, date: new Date()})
+  .returning(['id', 'model_id', 'price', 'flag', 'date']) // these columns do not return in MySQL
+  .insert({model_id: knex('models').where({model: modelNameParam}).select('models.id'), price: priceParam, flag: flagParam, date: new Date()})
   .catch(err => {
     console.log('Error: ', err);
   });
@@ -50,7 +61,7 @@ function addPrice(modelIdParam, priceParam) {
 function getAll() {
   return knex('prices')
   .innerJoin('models', 'prices.model_id', 'models.id')
-  .select('prices.price', 'prices.date', 'models.model', 'models.title')
+  .select('prices.price', 'prices.flag', 'prices.date', 'models.model', 'models.title')
   .catch(err => {
     console.log('Error: ', err);
   });
