@@ -12,22 +12,18 @@ const app = express();
 //const ds = require('./data-scrape');
 
 
-app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(express.static(__dirname + '/../../react-client/dist'));
 
 
 /* ON PAGE LOAD */
 /** CREATE GET '/' handler to retrieve price data from db to send to client **/
-app.get('/', async (req, res) => {
-
+app.get('/data', async (req, res) => {
   // Query db for All records
   let result = await getAll();
-  console.log('Get all result: ', result);
+  //console.log('Get all result: ', result);
   // Send all records in response
 
-    // res.send({
-    //   status: 'success',
-    //   message: 'hello, world!'
-    // })
+  res.send(result);
 
 });
 
@@ -102,7 +98,7 @@ setInterval(() => {
       console.log('Add New Price Success: ', resultAddPrice);
     }
   });
-}, 75000); // 21600000, Every 6 Hours | 300K, Every 5 minutes | 75K 1.25 min
+}, 15000000); // 21600000, Every 6 Hours | 15000000 Every 4.16 hours | 300K, Every 5 minutes | 75K 1.25 min
 
 
 
