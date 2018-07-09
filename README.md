@@ -6,10 +6,6 @@ Only CSS3 was used for styling.
 
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_prv_07092018.jpg)
 
-### Future Additions
-* Email Notification of price drops
-* Additional sites for data scraping
-
 ### Tech Stack:
 * Node.JS
 * Express
@@ -19,6 +15,10 @@ Only CSS3 was used for styling.
 * Nightmare.js
 * Axios
 * DataTables
+
+### Future Additions
+* Email Notification of price drops
+* Additional sites for data scraping
 
 ### Data Scraper:
 [github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js
