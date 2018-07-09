@@ -1,0 +1,112 @@
+    /* 'All' selector */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #2A2B2C;
+}
+.wrapper {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    display: grid;
+    /* grid-gap: 3px; */
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 40px 70px auto 40px;
+    grid-template-areas: 
+        "h h h h h h h h h h h h"
+        "m m b b b b b b b b b b"
+        "m m c c c c c c c c c c"
+        "f f f f f f f f f f f f";
+}
+
+.header {
+    grid-area: h;
+    background: #2A2B2C;
+    padding: 9px;
+}
+.header .b {
+    color: #FAFAFA;
+    font-size: medium;
+}
+.header img {
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+    margin-left: 10px;
+    margin-bottom: -5px;
+}
+.banner {
+    grid-area: b;
+    background: #d7dde5;
+    padding-left: 35px;
+    padding-top: 25px;
+    font-size: x-large;
+
+}
+.menu {
+    grid-area: m;
+    background: #2A2B2C;
+}
+.menu h3 {
+    padding-left: 9px;
+}
+.menu .b {
+   
+}
+.menu li {
+    padding: 15px 15px 15px 20px;
+    color: #a8a8a8;
+    text-decoration: none;
+    font-size: medium;
+}
+.menu li:hover, li:hover > a {
+    background: #4DD0E1;
+    color: white !important;
+}
+.menu li > a {   
+    text-decoration: none;
+    /* color: #a8a8a8; */
+}
+.menu li a:visited {
+    color: #a8a8a8;
+}
+.menu li .nav-selected {
+    background: #4DD0E1;
+    color: white !important;
+}
+
+/* .menu li a:hover {
+padding: 15px 15px 15px 20px;
+background: #4DD0E1;
+color: white;
+} */
+/* .menu li:active {
+background: #4DD0E1;
+color: white;
+} */
+
+
+.content {
+    grid-area: c;
+    background: #eff3f6;
+    padding: 35px;
+}
+/* controls alignment of charts displayed */
+.chart {
+    display: inline-block;
+    background: white;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+.chart > p {
+    margin-left: 20px;
+    font-size: medium;
+    color: #393f47;
+}
+.footer {
+    grid-area: f;
+    background: #2A2B2C;
+}

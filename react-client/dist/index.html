@@ -2,81 +2,15 @@
 <html>
 <head>
   <title>Item List</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 
-  <style>
-    .wrapper {
-      height: 100%;
-      display: grid;
-      /* grid-gap: 3px; */
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 40px auto 40px;
-      grid-template-areas: 
-        "h h h h h h h h h h h h"
-        "m m c c c c c c c c c c"
-        "f f f f f f f f f f f f";
-    }
-
-    .header {
-        grid-area: h;
-        background: #2A2B2C;
-        padding: 9px;
-    }
-    .header .b {
-      color: #FAFAFA;
-      font-size: x-large;
-    }
-
-    .menu {
-        grid-area: m;
-        background: #2A2B2C;
-    }
-    .menu h3 {
-      padding-left: 9px;
-    }
-    .menu .b {
-      background: #00ACC1;
-      padding-top: 5px;
-    }
-    .menu .c {
-      background: #E0F7F4;
-      padding-left: 9px;
-    }
-    .content {
-        grid-area: c;
-        background: #FAFAFA;
-        padding: 10px;
-    }
-
-    .footer {
-        grid-area: f;
-        background: #2A2B2C;
-    }
-  </style>
 </head>
 <body>
 
-<div class="wrapper">
-  <div class="header">
-    
-      <span class="b">Price Drop</span>
-   
-  </div>
-  <div class="menu">
-    <div class="b">
-        <h3>Dashboard</h3>
-        <div class="c">Site A</div>
+ <div id="app"></div>
 
-
-    </div>
-
-  </div>
-  <div class="content">
-    <div id="app"></div>
-  </div>
-  <div class="footer"></div>
-
-</div>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

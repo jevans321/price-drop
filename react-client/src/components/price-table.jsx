@@ -25,6 +25,7 @@ export default class PriceTable extends Component {
 
     render() {
         return (
+          <div>
             <table id="table_id" className="display">
              <thead>
               <tr>
@@ -48,7 +49,8 @@ export default class PriceTable extends Component {
                 ))
               }
             </tbody> */}
-          </table>
+            </table>
+          </div>
         )
     }
 }
