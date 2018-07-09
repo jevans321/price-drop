@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-// var dt = require( 'datatables.net' )();
-// require( 'datatables.net-dt' )();
-// require( 'datatables.net-buttons-dt' )();
-// require( 'datatables.net-responsive-dt' )();
-import List from './components/List.jsx';
 import axios from 'axios';
 import PriceTable from './components/price-table.jsx';
 import Charts from './components/Charts.jsx';
 import Nav from './components/Nav.jsx';
-import numbro from 'numbro';
 import '../dist/styles.css';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +16,7 @@ class App extends React.Component {
     };
   }
 
+  /* Get scraped data from database after component is mounted */
   componentDidMount() {
     axios.get('/data')
       .then((response) => {
@@ -52,11 +46,11 @@ class App extends React.Component {
           "pageLength": 50,
           "order": [[2, "desc"]],
           "rowCallback": function( row, data, index ) {
-            /* https://datatables.net/forums/discussion/comment/134049/#Comment_134049 */
-            //var allData = this.api().column(4).data().toArray();
+            /* Reference for below code syntax: 
+               https://datatables.net/forums/discussion/comment/134049/#Comment_134049 */
             if (data.flag === 1) {
               /* 'td:eq(4)' */
-              $('td', row).css({'background-color': '#FE2127'});
+              $('td', row).css({'background-color': '#fe5458'});
             } else if(data.flag === 2) {
               $('td', row).css({'background-color': '#E0F7F4'});
             }
@@ -64,16 +58,15 @@ class App extends React.Component {
       } );
     } );
   }
-
+  /* changeCategory function is passed to the navigation menu
+     It is used to update the state category property,
+     which is used to change the page view  */
   changeCategory(categoryVal) {
     this.setState({
       category: categoryVal
     });
-    // if(categoryVal !== 'home' && categoryVal !== 'about'){
-    //   this.getPlayerData("2017-18", categoryVal);
-    // }
   }
-
+  /* renderView function renders the View based on the state category property */
   renderView() {
     if (this.state.category === 'Dashboard') {
       return <Charts data={this.state.data}/>
@@ -97,10 +90,13 @@ class App extends React.Component {
           <div className="menu">
               <Nav category={this.state.category} changeCat={this.changeCategory.bind(this)}/>
           </div>
+
           <div className="banner">{this.state.category}</div>
+
           <div className="content">
             {this.renderView()}
           </div>
+
           <div className="footer"></div>
         </div>
       </div>
@@ -109,4 +105,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-//ReactDOM.render(<Nav category={App.state.category} changeCat={App.changeCategory.bind(App)}/>, document.getElementById('nav-menu'));
