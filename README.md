@@ -7,8 +7,8 @@ Only CSS3 was used for styling.
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_prv_07092018.jpg)
 
 ### Future Additions
-Email Notification of price drops
-Additional sites for data scraping
+* Email Notification of price drops
+* Additional sites for data scraping
 
 ### Tech Stack:
 * Node.JS
