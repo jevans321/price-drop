@@ -4,7 +4,7 @@ This application checks a popular electronics site multiple times a day for any 
 When the client section of the site is visited through a browser, the pricing data is retreived from the database and is displayed in graph and table formats.
 Only CSS3 was used for styling.
 
-![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_prv_07092018.jpg)
+![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_table_07092018.jpg)
 
 ### Tech Stack:
 * Node.JS
@@ -30,6 +30,3 @@ Only CSS3 was used for styling.
 
 ### Dashboard
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_07092018.jpg)
-
-### Price Table
-![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_table_07092018.jpg)
