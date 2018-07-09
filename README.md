@@ -1,5 +1,6 @@
 # Price-Drop
 This is an application that scrapes tv product data from the Samsung site and checks for any price fluctuations, then stores all the data in a MySQL database.
+
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_prv_07092018.jpg)
 
 ### About
