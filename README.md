@@ -8,7 +8,7 @@ Only CSS3 was used for styling.
 
 ### Tech Stack:
 * Nightmare.js
-* Node.JS
+* Node.js
 * Express
 * MySQL
 * React
@@ -16,6 +16,7 @@ Only CSS3 was used for styling.
 * Knex
 * Axios
 * DataTables
+* Babel.js
 
 ### Future Additions
 * Email Notification of price drops
