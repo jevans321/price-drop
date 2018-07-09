@@ -7,12 +7,13 @@ Only CSS3 was used for styling.
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_table_07092018.jpg)
 
 ### Tech Stack:
+* Nightmare.js
 * Node.JS
 * Express
 * MySQL
 * React
 * CSS Grid
-* Nightmare.js
+* Knex
 * Axios
 * DataTables
 
