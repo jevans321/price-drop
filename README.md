@@ -22,6 +22,9 @@ Only CSS3 was used for styling.
 * Email Notification of price drops
 * Additional sites for data scraping
 
+### Database MySQL Schema (Knex syntax):
+[github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js](https://github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js)
+
 ### Data Scraper:
 [github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js
 ](https://github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js)
