@@ -22,9 +22,6 @@ Only CSS3 was used for styling.
 * Email Notification of price drops
 * Additional sites for data scraping
 
-### Database MySQL Schema (Knex syntax):
-[github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js](https://github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js)
-
 ### Data Scraper:
 [github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js
 ](https://github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js)
@@ -32,6 +29,9 @@ Only CSS3 was used for styling.
 ### Database Queries:
 [github.com/jevans321/Price-Drop/blob/master/src/server/db/queries/index.js
 ](https://github.com/jevans321/Price-Drop/blob/master/src/server/db/queries/index.js)
+
+### Database MySQL Schema (Knex syntax):
+[github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js](https://github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js)
 
 ### Dashboard
 ![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_07092018.jpg)
