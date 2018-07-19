@@ -59,6 +59,7 @@ export default class Charts extends Component {
 
   render() {
     let results = this.filterPriceChanges();
+    const formatter = (value) => `$${value}`;
     // create chart for each data array in results array
     const charts = results.map((modelArray) => 
       <div className="chart">
@@ -68,8 +69,12 @@ export default class Charts extends Component {
           <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{r: 8}}/>
           <CartesianGrid strokeDasharray="3 3"/>
           <XAxis dataKey={"dateClient"} />
-          <YAxis />
-          <Legend />
+          {
+            modelArray[0].price > 3000
+            ? <YAxis tickFormatter={formatter} />
+            : <YAxis domain={[0, 3000]} allowDataOverflow tickFormatter={formatter} />
+          }
+          {/* <Legend /> */}
           <Tooltip />
       </LineChart>
      </div>
