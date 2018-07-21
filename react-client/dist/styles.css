@@ -44,7 +44,6 @@ body {
     padding-left: 35px;
     padding-top: 25px;
     font-size: x-large;
-
 }
 
 .menu {
@@ -54,35 +53,48 @@ body {
 .menu h3 {
     padding-left: 9px;
 }
-.menu .b {
-   /* styling place-holder */
-}
-.menu li {
-    padding: 15px 15px 15px 20px;
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_navbar_vertical_active */
+.menu li a {
+    display: block;
     color: #a8a8a8;
-    text-decoration: none;
-    font-size: medium;
-}
-.menu li:hover, li:hover > a {
-    background: #4DD0E1;
-    color: white !important;
-}
-.menu li > a {   
+    padding: 15px 15px 15px 10px;
     text-decoration: none;
 }
-.menu li a:visited {
-    color: #a8a8a8;
+.menu li a.active {
+    background-color: #4DD0E1;
+    color: white;
 }
-.menu li .nav-selected {
-    background: #4DD0E1;
-    color: white !important;
+.menu li a:hover:not(.active) {
+    background-color: #171718;
+    color: white;
 }
-.menu li img {
+.menu li a .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
     margin-right: 7px;
-    width: 16px;
+    margin-bottom: -1px;
 }
-
-
+.menu li a .icon-dash {
+    background: url("./assets/line-chart.png") no-repeat;
+    background-size: contain;
+}
+/* https://stackoverflow.com/questions/28243568/how-do-i-make-active-navigation-icon-by-hover-or-click */
+.menu li a:hover .icon-dash, 
+.menu li a.active .icon-dash {
+    background: url("./assets/line-chart-w.png") no-repeat;
+    background-size: contain;
+}
+.menu li a .icon-table {
+    background: url("./assets/table-selection-cell.png") no-repeat;
+    background-size: contain;
+}
+/* https://stackoverflow.com/questions/28243568/how-do-i-make-active-navigation-icon-by-hover-or-click */
+.menu li a:hover .icon-table, 
+.menu li a.active .icon-table {
+    background: url("./assets/table-selection-cell-w.png") no-repeat;
+    background-size: contain;
+}
 .content {
     grid-area: c;
     background: #eff3f6;
