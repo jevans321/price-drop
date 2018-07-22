@@ -37,6 +37,9 @@ class App extends React.Component {
     $(document).ready(() => {
       $('#table_id').DataTable( {
           "data": this.state.data,
+          "columnDefs": [
+            {"className": "dt-center", "targets": -1}
+          ],
           "columns": [
               { "data": "title" },
               { "data": "model" },
@@ -51,7 +54,17 @@ class App extends React.Component {
                 }
               },
               { "data": "price" },
-              { "data": "flag" }
+              { "data": "flag",
+                "render": function ( data, type, row, meta ) {
+                  if(data === 1) {
+                    return `<img src="./assets/down_white.png" />`;
+                  } else if(data === 2) {
+                    return `<img src="./assets/up_charc.png" />`;
+                  } else {
+                    return '-';//'<span style="margin-left: 35px">-<span/>';
+                  }
+                }
+              }
           ],
           "pageLength": 50,
           "order": [[2, "desc"]],

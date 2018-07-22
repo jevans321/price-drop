@@ -30,7 +30,7 @@ app.get('/data', async (req, res) => {
 /** CREATE A SCHEDULED RUN FUNCTION HERE, to run scraper function 3+ times/daily  **/
 // Every 6 Hours
 
-setTimeout(() => {
+setInterval(() => {
   vo(run)(async (err, result) => {
     let newScrapedDataObject = result;
     // Scrape site, get new data
@@ -98,7 +98,7 @@ setTimeout(() => {
       console.log('Add New Price Success: ', resultAddPrice);
     }
   });
-}, 200000000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 75K 1.25 min
+}, 15000000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 75K 1.25 min
 
 
 
