@@ -53,7 +53,11 @@ class App extends React.Component {
                   return date;
                 }
               },
-              { "data": "price" },
+              { "data": "price",
+                "render": function ( data, type, row, meta ) {
+                  return "$" + data;
+                }
+               },
               { "data": "flag",
                 "render": function ( data, type, row, meta ) {
                   if(data === 1) {
