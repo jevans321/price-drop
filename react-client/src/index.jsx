@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import PriceTable from './components/price-table.jsx';
-import Charts from './components/Charts.jsx';
+import LChart from './components/L-Chart.jsx';
 import Nav from './components/Nav.jsx';
 import '../dist/styles.css';
+import numbro from 'numbro';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +40,16 @@ class App extends React.Component {
           "columns": [
               { "data": "title" },
               { "data": "model" },
-              { "data": "date" },
+              // https://datatables.net/reference/option/columns.type
+              { "type": "date", "data": "date",
+              // https://datatables.net/reference/option/columns.render
+                "render": function ( data, type, row, meta ) {
+                  let milliseconds = Date.parse(data);
+                  let clientDate = new Date(milliseconds);
+                  let date = clientDate.toLocaleString();
+                  return date;
+                }
+              },
               { "data": "price" },
               { "data": "flag" }
           ],
@@ -66,10 +76,62 @@ class App extends React.Component {
       category: categoryVal
     });
   }
+
+  /* filterPriceChanges function filters out all records that have had price changes
+     - The filtered records are then displayed in the graphs */
+  filterPriceChanges() {
+    // Convert price strings to numbers: e.g. "$1000.50" to 1000.50
+    this.state.data.forEach((obj) => obj.price = numbro.unformat(obj.price));
+
+    let results = [];
+    // map is object of models(keys) with price changes */
+    let map = {};
+    /* filter out all records that have had prices changes
+        and add them to 'map' object */
+    this.state.data.forEach((obj) => {
+      if(obj.flag !== 0) {
+        if(!map[obj.model]) {
+          map[obj.model] = true;
+        }
+      }
+    });
+
+    // map2 is object of models(key) with unique date(value)
+    let map2 = {};
+    /* The below 'for loop' filters only one tv model record from each day from the
+        previously filtered records
+        - These filtered record objects are then added to a separate new array for each tv model
+        - Then these new arrays are added to one large 'results' array
+        - This was specifically done so the results array can be looped through in
+          the render function and charts can be created for each tv model
+          based on that tv models array. */
+    for(let key in map) {
+      let modelArr = this.state.data.filter((obj) => {
+        let milliseconds = Date.parse(obj.date);
+        let clientDate = new Date(milliseconds);
+        let date = clientDate.toLocaleString();
+        date = date.split(',')[0];
+        // if model key equals obj model name
+        if(key === obj.model && !map2[key+date]) {
+          map2[key+date] = true;
+          let graphDate = date.slice(0, date.length - 5).replace('/', '-');
+          //console.log('graph date: ', graphDate);
+          obj.dateClient = graphDate;
+          return obj;       
+        }
+      });
+
+      results.push(modelArr);
+    }
+    console.log('filtered results: ', results);
+    // returns an array of nested tv model arrays. The arrays contain records of one price from each day there was a scrape
+    return results;
+  }
+
   /* renderView function renders the View based on the state category property */
   renderView() {
     if (this.state.category === 'Dashboard') {
-      return <Charts data={this.state.data}/>
+      return <LChart filterPrice={this.filterPriceChanges.bind(this)}/>
     } else if (this.state.category === 'Price Table') {
       this.createPriceTable();
       return <PriceTable data={this.state.data}/>
