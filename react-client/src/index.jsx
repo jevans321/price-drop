@@ -125,23 +125,24 @@ class App extends React.Component {
           based on that tv models array. */
     for(let key in map) {
       let modelArr = this.state.data.filter((obj) => {
-        let milliseconds = Date.parse(obj.date);
-        let clientDate = new Date(milliseconds);
-        let date = clientDate.toLocaleString();
+        // let milliseconds = Date.parse(obj.date);
+        // let clientDate = new Date(milliseconds);
+        // let date = clientDate.toLocaleString();
+        let date = this.getClientDate(obj.date, 'l');
         date = date.split(',')[0];
         // if model key equals obj model name
         if(key === obj.model && !map2[key+date]) {
           map2[key+date] = true;
           let graphDate = date.slice(0, date.length - 5).replace('/', '-');
           //console.log('graph date: ', graphDate);
-          obj.dateClient = graphDate;
-          return obj;       
+          obj.dateClient = this.getClientDate(obj.date, 'ld');;
+          return obj;
         }
       });
 
       results.push(modelArr);
     }
-    // console.log('filtered results: ', results);
+    console.log('filtered results: ', results);
     // returns an array of nested tv model arrays. The arrays contain records of one price from each day there was a scrape
     return results;
   }
@@ -171,7 +172,9 @@ class App extends React.Component {
       '04': 'April',
       '05': 'May',
       '06': 'June',
-      '07': 'July'
+      '07': 'July',
+      '08': 'August',
+      '09': 'September'
     }
     let result = [];
     let hash = {};
@@ -192,8 +195,9 @@ class App extends React.Component {
     for(let key in hash) {
       result.push(hash[key]);
     }
-    // console.log('the result..... : ', result);
-    if(result.length !== 0) return result;
+    //console.log('the result from conditional: ', result);
+    return result;
+    
   }
 
   /* renderView function renders the View based on the state category property */
@@ -201,8 +205,7 @@ class App extends React.Component {
     if (this.state.category === 'Dashboard') {
       return (
         <div>
-          <CChart priceDrops={this.allPriceDrops.bind(this)}/>
-          <LChart filterPrice={this.filterPriceChanges.bind(this)}/>
+          <LChart priceDrops={this.allPriceDrops.bind(this)} filterPrice={this.filterPriceChanges.bind(this)}/>
         </div>
       );
     } else if (this.state.category === 'Price Table') {

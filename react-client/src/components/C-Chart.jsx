@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PieChart, Pie, Sector, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Sector, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
  
 
@@ -56,52 +56,8 @@ class CChart extends Component {
     };
 
     this.onPieEnter = this.onPieEnter.bind(this);
-
   }
 
-  componentDidMount() {
-    // if(this.props.priceDrops().length > 0){
-    //   this.setState({ activeIndex: records.length - 1}); 
-    // } else {
-    //     this.setState({ activeIndex: 0});
-    // }
-   
-    // let records = ()=>{ this.props.priceDrops() };
-    // this.setState({ activeIndex: records.length - 1});
-//     var promise1 = new Promise((resolve, reject) => {
-//       resolve(this.props.priceDrops());
-//     });
-
-//     promise1.then((value) => {
-//       console.log('The Value....... :', value);
-//       this.setState({ activeIndex: value.length - 1});
-//         // expected output: "Success!"
-//   });
-    // let this2 = this;
-    // async function asyncCall() {
-    //   let result = await this2.props.priceDrops();
-    //   console.log('async result: ', result);
-    // }
-    // asyncCall();
-    // this.props.priceDrops().then((records) => {
-    //   this.setState({ activeIndex: records.length - 1});
-    // }, (error) => { 
-    //     alert(error);
-    // });
-  }
-
-//   componentDidMount() {
-//     authUser().then((user) => {
-//        this.userHasAuthenticated(true);
-//        this.setState({ isAuthenticating: false });
-//     }, (error) => {
-//        this.setState({ isAuthenticating: false });
-//        alert(e);
-//     });
-// }
-  updateNah(records) {
-    this.setState({ activeIndex: records.length - 1});
-  }
 
   onPieEnter(data, index) {
     this.setState({
@@ -110,27 +66,30 @@ class CChart extends Component {
   }
 
   render () {
-    // if(this.state.activeIndex <= 0) {
+    // if(!this.props.priceDrops) {
     //     return <div>Loading...</div>;
     // }
     let records = this.props.priceDrops();
 
     // console.log('the records: ', records);
     return (
-      <PieChart width={800} height={400}>
-      <Pie 
-        activeIndex={this.state.activeIndex}
-        activeShape={renderActiveShape} 
-        dataKey="priceDrops"
-        data={records} 
-        cx={300} 
-        cy={200} 
-        innerRadius={60}
-        outerRadius={80} 
-        fill="#8884d8"
-        onMouseEnter={this.onPieEnter}
-      />
-      </PieChart>
+      <div className="chart">
+        <p><strong>Price Drop Monthly Totals</strong></p>      
+          <PieChart width={500} height={289}>
+          <Pie 
+            activeIndex={this.state.activeIndex}
+            activeShape={renderActiveShape} 
+            dataKey="priceDrops"
+            data={records} 
+            cx={250} 
+            cy={130} 
+            innerRadius={70}
+            outerRadius={90} 
+            fill="#8884d8"
+            onMouseEnter={this.onPieEnter}
+          />
+          </PieChart>        
+      </div>
     );
   }
 }
