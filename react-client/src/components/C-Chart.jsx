@@ -85,7 +85,7 @@ class CChart extends Component {
             cy={130} 
             innerRadius={70}
             outerRadius={90} 
-            fill="#8884d8"
+            fill="red"
             onMouseEnter={this.onPieEnter}
           />
           </PieChart>        

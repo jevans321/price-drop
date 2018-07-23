@@ -4,7 +4,7 @@ Price-Drop is a price monitoring application that checks a popular electronics s
 When the client section of the site is visited through a browser, the pricing data is retrieved from the database and is displayed in graph and table formats.
 Only CSS3 was used for styling.
 
-![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_table_07092018.jpg)
+![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_table_07232018.jpg)
 
 ### Tech Stack:
 * Nightmare.js
@@ -34,4 +34,4 @@ Only CSS3 was used for styling.
 [github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js](https://github.com/jevans321/Price-Drop/blob/master/src/server/db/migrations/20180526005527_create_model_and_price_tables.js)
 
 ### Dashboard
-![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_07092018.jpg)
+![alt text](https://github.com/jevans321/Price-Drop/blob/master/react-client/dist/assets/pdrop_dashbord_07232018.jpg)
