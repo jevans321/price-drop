@@ -66,7 +66,7 @@ class App extends React.Component {
                   } else if(data === 2) {
                     return `<img src="./assets/up_charc.png" />`;
                   } else {
-                    return '-';//'<span style="margin-left: 35px">-<span/>';
+                    return '-';
                   }
                 }
               }
@@ -125,9 +125,6 @@ class App extends React.Component {
           based on that tv models array. */
     for(let key in map) {
       let modelArr = this.state.data.filter((obj) => {
-        // let milliseconds = Date.parse(obj.date);
-        // let clientDate = new Date(milliseconds);
-        // let date = clientDate.toLocaleString();
         let date = this.getClientDate(obj.date, 'l');
         date = date.split(',')[0];
         // if model key equals obj model name
@@ -146,7 +143,7 @@ class App extends React.Component {
     // returns an array of nested tv model arrays. The arrays contain records of one price from each day there was a scrape
     return results;
   }
-
+  /* getClientDate is a helper function that converts UTC/Server time to client time */
   getClientDate(date, type) {
     let milliseconds = Date.parse(date);
     let clientDate = new Date(milliseconds);
@@ -155,16 +152,6 @@ class App extends React.Component {
   }
 
   allPriceDrops() {
-    // let results = [];
-    // for(let record of this.state.data) {
-    //   if(record.flag === 1) {
-    //     record.fullClientDate = this.getClientDate(record.date, 'ld');
-    //     record.price = numbro.unformat(record.price);
-    //     results.push(record);
-    //   }
-    // }
-    // return results;
-
     let months = {
       '01': 'January',
       '02': 'February',
@@ -195,9 +182,7 @@ class App extends React.Component {
     for(let key in hash) {
       result.push(hash[key]);
     }
-    //console.log('the result from conditional: ', result);
-    return result;
-    
+    return result;    
   }
 
   /* renderView function renders the View based on the state category property */

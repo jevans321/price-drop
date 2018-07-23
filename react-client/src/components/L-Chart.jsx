@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import CChart from './C-Chart.jsx';
 
+/* This can be refactored to a functional component */
 export default class LChart extends Component {
-  /* constructur not necessary */
   constructor(props) {
       super(props);
   }

@@ -66,12 +66,8 @@ class CChart extends Component {
   }
 
   render () {
-    // if(!this.props.priceDrops) {
-    //     return <div>Loading...</div>;
-    // }
     let records = this.props.priceDrops();
 
-    // console.log('the records: ', records);
     return (
       <div className="chart">
         <p><strong>Price Drop Monthly Totals</strong></p>      
