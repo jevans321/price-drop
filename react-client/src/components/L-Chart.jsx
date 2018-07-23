@@ -14,7 +14,7 @@ export default class LChart extends Component {
     const formatter = (value) => `$${value}`;
     // create chart for each data array in results array
     const charts = results.map((modelArray) => 
-      <div className="chart">
+      <div key={modelArray[0].model + modelArray[0].date} className="chart">
         <p><strong>Model</strong></p>
         <p style={{'marginBottom': '20px'}}>{modelArray[0].title}</p>
         <LineChart width={400} height={250} data={modelArray}>

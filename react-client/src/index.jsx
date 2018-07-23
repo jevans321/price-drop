@@ -4,6 +4,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import PriceTable from './components/price-table.jsx';
 import LChart from './components/L-Chart.jsx';
+import CChart from './components/C-Chart.jsx';
 import Nav from './components/Nav.jsx';
 import '../dist/styles.css';
 import numbro from 'numbro';
@@ -21,7 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/data')
       .then((response) => {
-        console.log("The Data: ", response.data);
+        // console.log("The Data: ", response.data);
         // 'response.data' is an array of objects
         this.setState({
           data: response.data
@@ -140,15 +141,70 @@ class App extends React.Component {
 
       results.push(modelArr);
     }
-    console.log('filtered results: ', results);
+    // console.log('filtered results: ', results);
     // returns an array of nested tv model arrays. The arrays contain records of one price from each day there was a scrape
     return results;
+  }
+
+  getClientDate(date, type) {
+    let milliseconds = Date.parse(date);
+    let clientDate = new Date(milliseconds);
+    if(type === 'l') return clientDate.toLocaleString();
+    else if(type === 'ld') return clientDate.toLocaleDateString("en-US");
+  }
+
+  allPriceDrops() {
+    // let results = [];
+    // for(let record of this.state.data) {
+    //   if(record.flag === 1) {
+    //     record.fullClientDate = this.getClientDate(record.date, 'ld');
+    //     record.price = numbro.unformat(record.price);
+    //     results.push(record);
+    //   }
+    // }
+    // return results;
+
+    let months = {
+      '01': 'January',
+      '02': 'February',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July'
+    }
+    let result = [];
+    let hash = {};
+    for(let record of this.state.data) {
+      let monthNum = record.date[5]+ record.date[6]
+      if(record.date === '2018-06-24T23:28:27.000Z') record.flag = 1;
+      if(record.flag === 1) {
+        if(hash[monthNum]) {
+          hash[monthNum].priceDrops++;
+        } else {
+          hash[monthNum] = { 
+            priceDrops: 1,
+            month: months[monthNum]
+          };
+        }
+      }
+    }
+    for(let key in hash) {
+      result.push(hash[key]);
+    }
+    // console.log('the result..... : ', result);
+    if(result.length !== 0) return result;
   }
 
   /* renderView function renders the View based on the state category property */
   renderView() {
     if (this.state.category === 'Dashboard') {
-      return <LChart filterPrice={this.filterPriceChanges.bind(this)}/>
+      return (
+        <div>
+          <CChart priceDrops={this.allPriceDrops.bind(this)}/>
+          <LChart filterPrice={this.filterPriceChanges.bind(this)}/>
+        </div>
+      );
     } else if (this.state.category === 'Price Table') {
       this.createPriceTable();
       return <PriceTable data={this.state.data}/>
@@ -157,7 +213,6 @@ class App extends React.Component {
 
 
   render () {
-
     return (
       <div>
         <div className="wrapper">
