@@ -4,15 +4,6 @@ import express from 'express';
 import vo from 'vo';
 const sendmail = require('sendmail')();
  
-sendmail({
-    from: 'jay3133@gmail.com',
-    to: 'james3780@gmail.com',
-    subject: 'test sendmail',
-    html: 'Mail of test sendmail ',
-  }, function(err, reply) {
-    console.log(err && err.stack);
-    console.dir(reply);
-});
 // const express = require('express');
 const bodyParser = require('body-parser');
 // const expressMongoDb = require('express-mongo-db');
@@ -95,6 +86,21 @@ setInterval(() => {
           /** send email notification of Price Drop **/
           // set drop flag to '1' color red(?)
           flag = 1;
+
+          let priceDifference = lastPrice - priceNum;
+          // send email notification
+          sendmail({
+            from: 'jay3133@gmail.com',
+            to: 'james3780@gmail.com',
+            subject: `PRICE DROP: ${title} :: Current ${price} :: Drop ${priceDifference}`,
+            html: `TV: ${title}
+            Model: ${model}
+            Price has dropped ${priceDifference} dollars.
+            Previous price ${lastPrice}, current price ${priceNum}`,
+          }, function(err, reply) {
+            console.log(err && err.stack);
+            console.dir(reply);
+        });
         // if new price is greater than last price in prices table
         } else if(priceNum > lastPrice) {
           // set drop flag to '2' color orange(?)
