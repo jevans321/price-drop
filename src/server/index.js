@@ -90,9 +90,9 @@ setInterval(() => {
           let priceDifference = lastPrice - priceNum;
           // send email notification
           sendmail({
-            from: 'jay3133@gmail.com',
+            from: 'otisred056@gmail.com',
             to: 'james3780@gmail.com',
-            subject: `PRICE DROP: ${title} :: Current ${price} :: Drop ${priceDifference}`,
+            subject: `PRICE DROP ${title} Drop $${priceDifference} Current ${price}`,
             html: `TV: ${title}
             Model: ${model}
             Price has dropped ${priceDifference} dollars.

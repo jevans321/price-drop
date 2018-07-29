@@ -161,7 +161,10 @@ class App extends React.Component {
       '06': 'June',
       '07': 'July',
       '08': 'August',
-      '09': 'September'
+      '09': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December'
     }
     let result = [];
     let hash = {};
