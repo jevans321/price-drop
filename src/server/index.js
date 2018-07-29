@@ -2,6 +2,17 @@ import { modelExists, addModel, addPrice, getAll, getLastPrice } from './db/quer
 import { run } from './data-scrape';
 import express from 'express';
 import vo from 'vo';
+const sendmail = require('sendmail')();
+ 
+sendmail({
+    from: 'jay3133@gmail.com',
+    to: 'james3780@gmail.com',
+    subject: 'test sendmail',
+    html: 'Mail of test sendmail ',
+  }, function(err, reply) {
+    console.log(err && err.stack);
+    console.dir(reply);
+});
 // const express = require('express');
 const bodyParser = require('body-parser');
 // const expressMongoDb = require('express-mongo-db');
