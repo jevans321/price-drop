@@ -165,7 +165,8 @@ class App extends React.Component {
       '10': 'October',
       '11': 'November',
       '12': 'December'
-    }
+    };
+    
     let result = [];
     let hash = {};
     for(let record of this.state.data) {

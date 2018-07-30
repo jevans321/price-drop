@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon src/server/index.js --exec babel-node --presets es2015",
+    "server-dev": "nodemon src/server/index.js",
     "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js"
   },
   "author": "Beth Johnson",
