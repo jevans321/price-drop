@@ -15,7 +15,7 @@ module.exports = {
   },
   development: {
     client: 'mysql',  
-    connection: `mysql://${process.env.RDS_USER}:${process.env.RDS_PASS}@${process.env.RDS_HOST}/p_drop`,
+    connection: `mysql://${process.env.RDS_USER}:${process.env.RDS_PASS}@${process.env.RDS_HOST}/p_drop?sslrootcert=rds-combined-ca-bundle.pem&sslmode=require`,
     migrations: {
       directory: path.join(BASE_PATH, 'migrations')
     },
