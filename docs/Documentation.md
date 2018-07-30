@@ -23,10 +23,13 @@ Local
 `mysql -u root`
 Remote
 `mysql -u user -p password`
+RDS MySQL
+`mysql -h [RDS_host] -P 3306 -u [user] -p`
 
 ## Errors
 ### Console error when nightmare loads browser
 `Cannot assign to read only property 'onbeforeunload' of object`
+Fix Reference: https://github.com/segmentio/nightmare/issues/1082
 Fix: updated the below 2 lines to 'true'
 #### nightmare/lib/preload.js
 Line 50 in f49265c
