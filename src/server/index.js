@@ -14,7 +14,7 @@ const app = express();
 //const ds = require('./data-scrape');
 
 
-app.use(express.static(__dirname + '/../../react-client/dist'));
+app.use(express.static(__dirname + '/../../react-client/dist/'));
 
 
 /* ON PAGE LOAD */
