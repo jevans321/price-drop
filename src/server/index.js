@@ -2,6 +2,7 @@ import { modelExists, addModel, addPrice, getAll, getLastPrice } from './db/quer
 import { run } from './data-scrape';
 import express from 'express';
 import vo from 'vo';
+import http from "http";
 const sendmail = require('sendmail')();
  
 // const express = require('express');
@@ -9,9 +10,10 @@ const bodyParser = require('body-parser');
 // const expressMongoDb = require('express-mongo-db');
 const port = process.env.PORT || 8080;
 const app = express();
-//const vo = require('vo');
-//const queries = require('./db/queries/index');
-//const ds = require('./data-scrape');
+
+setInterval(function() {
+  http.get("http://pdrop.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 
 app.use(express.static(__dirname + '/../../react-client/dist/'));
