@@ -71,7 +71,7 @@ class CChart extends Component {
     return (
       <div className="chart">
         <p><strong>Price Drop Monthly Totals</strong></p>      
-          <PieChart width={515} height={289}>
+          <PieChart width={524} height={289}>
           <Pie 
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape} 
