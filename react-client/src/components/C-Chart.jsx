@@ -77,7 +77,7 @@ class CChart extends Component {
             activeShape={renderActiveShape} 
             dataKey="priceDrops"
             data={records} 
-            cx={250} 
+            cx={285} 
             cy={130} 
             innerRadius={70}
             outerRadius={90} 
