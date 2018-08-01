@@ -11,6 +11,9 @@ export default class LChart extends Component {
 
   render() {
     let results = this.props.filterPrice();
+    // if(!results.length) {
+    //   return <div>Loading...</div>;
+    // }
     const formatter = (value) => `$${value}`;
     // create chart for each data array in results array
     const charts = results.map((modelArray) => 
