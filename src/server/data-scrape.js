@@ -18,7 +18,7 @@ export function* run() {
   let result = yield nightmare
     .useragent(useragents[getRandomInt(0, useragents.length - 1)])
     .goto('https://www.samsung.com/us/televisions-home-theater/tvs/all-tvs/s/_/n-10+11+hv1uh/')
-    .wait(10000)
+    .wait(2000)
 
     // scroll down from top of page about a fourth of the way down
     .scrollTo(2000, 0)
