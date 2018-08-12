@@ -1,10 +1,10 @@
-import knex from '../connection';
-
+// import knex from '../connection';
+const knex = require('../connection');
 /*** ------------- MySQL Queries ------------- ***/
 
 /* Check if model exists in 'models' table */
 // Return boolean
-function modelExists(modelParam) {
+export const modelExists = (modelParam) => {
   /* Possible faster query syntax:
       * SELECT TOP 1 products.id FROM products WHERE products.id = ?;
      Raw query:
@@ -25,11 +25,11 @@ function modelExists(modelParam) {
   .catch(err => {
     console.log('Error: ', err);
   }); 
-}
+};
 
 /* Insert model into 'models' table */
 // Return success notification
-function addModel(modelParam, titleParam, imageParam) {
+export const addModel = (modelParam, titleParam, imageParam) => {
   return knex('models')
   .returning(['id', 'model', 'title']) // these columns do not return in MySQL
   .insert({model: modelParam, title: titleParam, image: imageParam})
@@ -37,11 +37,11 @@ function addModel(modelParam, titleParam, imageParam) {
     console.log('Error: ', err);
   });
   // Raw e.g. knex.raw(`INSERT INTO models (model, title, image) VALUES(${modelParam}, ${titleParam}, ${imageParam})`)
-}
+};
 
 /* Insert price into 'prices' table */
 // Return success notification
-function addPrice(modelNameParam, priceParam, flagParam) {
+export const addPrice = (modelNameParam, priceParam, flagParam) => {
   // console.log('3: inside addPrice');
   return knex('prices')
   .returning(['id', 'model_id', 'price', 'flag', 'date']) // these columns do not return in MySQL
@@ -49,22 +49,22 @@ function addPrice(modelNameParam, priceParam, flagParam) {
   .catch(err => {
     console.log('Error: ', err);
   });
-}
+};
 
 /* Retrieve ALL records from 'prices' table */
 // Return records
-function getAll() {
+export const getAll = () => {
   return knex('prices')
   .innerJoin('models', 'prices.model_id', 'models.id')
   .select('prices.price', 'prices.flag', 'prices.date', 'models.model', 'models.title')
   .catch(err => {
     console.log('Error: ', err);
   });
-}
+};
 
 /* Retrieve Last price for specific model_id from 'prices' table */
 // Return price
-function getLastPrice(modelIdParam) {
+export const getLastPrice = (modelIdParam) => {
   /* 
     Raw query:
     * knex.raw('select price from prices where id = (select  MAX(id) from prices where model_id = ?', modelIdParam)
@@ -75,6 +75,6 @@ function getLastPrice(modelIdParam) {
   .catch(err => {
     console.log('Error: ', err);
   });
-}
+};
 
-export { modelExists, addModel, addPrice, getAll, getLastPrice };
+//export { modelExists, addModel, addPrice, getAll, getLastPrice };
