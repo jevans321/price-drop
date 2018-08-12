@@ -3,15 +3,6 @@ import { run } from './data-scrape';
 import express from 'express';
 import vo from 'vo';
 import http from "http";
-// const modelExists = require('./db/queries/index');
-// const addModel = require('./db/queries/index');
-// const addPrice = require('./db/queries/index');
-// const getAll = require('./db/queries/index');
-// const getLastPrice = require('../db/queries/index');
-// const run = require('./data-scrape');
-// const express = require('express');
-// const vo = require('vo');
-// const http = require('http');
 
 const sendmail = require('sendmail')();
 const bodyParser = require('body-parser');
