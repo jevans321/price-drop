@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { PieChart, Pie, Sector, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
  
 
   const renderActiveShape = (props) => {
+    console.log("props...... :", props);
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
       fill, payload, percent, value } = props;
@@ -66,24 +67,29 @@ class CChart extends Component {
   }
 
   render () {
-    let records = this.props.priceDrops();
-
+    let records = this.props.priceDrops;
+    let colors = ["red", "purple", "orange"];
     return (
       <div className="chart">
         <p><strong>Price Drop Monthly Totals</strong></p>      
-          <PieChart width={540} height={289}>
+          <PieChart width={500} height={289}>
           <Pie 
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape} 
             dataKey="priceDrops"
             data={records} 
-            cx={285} 
+            cx={250} 
             cy={130} 
-            innerRadius={70}
-            outerRadius={90} 
-            fill="red"
+            innerRadius={60}
+            outerRadius={80} 
             onMouseEnter={this.onPieEnter}
-          />
+          >
+          {
+            records.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index]}/>
+            ))
+          }
+          </Pie>
           </PieChart>        
       </div>
     );

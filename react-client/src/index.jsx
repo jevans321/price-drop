@@ -14,24 +14,36 @@ class App extends React.Component {
     super(props);
     this.state = { 
       category: 'Dashboard',
-      data: []
+      data: [],
+      priceDrops: [],
+      allPriceChanges: [],
+      isLoading: false
     };
   }
 
   /* Get scraped data from database after component is mounted */
   componentDidMount() {
+    this.setState({ isLoading: true });
     axios.get('/data')
       .then((response) => {
         // console.log("The Data: ", response.data);
         // 'response.data' is an array of objects
         this.setState({
           data: response.data
-        })
+        });
+      })
+      .then(() => {
+        this.filterPriceChanges();
+        this.allPriceDrops();
       })
       .catch((error) => {
         console.log(error);
       });
 
+      // setTimeout(() => {
+      //   this.filterPriceChanges();
+      //   this.allPriceDrops();
+      // }, 3000);
   }
 
   createPriceTable() {
@@ -139,7 +151,7 @@ class App extends React.Component {
     }
     console.log('filtered results: ', results);
     // returns an array of nested tv model arrays. The arrays contain records of one price from each day there was a scrape
-    return results;
+    this.setState({ allPriceChanges: results });
   }
   /* getClientDate is a helper function that converts UTC/Server time to client time */
   getClientDate(date, type) {
@@ -184,15 +196,20 @@ class App extends React.Component {
     for(let key in hash) {
       result.push(hash[key]);
     }
-    return result;    
+    this.setState({
+      priceDrops: result,
+      isLoading: false
+    });
   }
 
   /* renderView function renders the View based on the state category property */
   renderView() {
+    console.log('PriceDrops :', this.state.priceDrops);
+    console.log('Filterd Prices :', this.state.allPriceChanges);
     if (this.state.category === 'Dashboard') {
       return (
         <div>
-          <LChart priceDrops={this.allPriceDrops.bind(this)} filterPrice={this.filterPriceChanges.bind(this)}/>
+          <LChart priceDrops={this.state.priceDrops} filterPrice={this.state.allPriceChanges}/>
         </div>
       );
     } else if (this.state.category === 'Price Table') {
@@ -218,7 +235,11 @@ class App extends React.Component {
           <div className="banner">{this.state.category}</div>
 
           <div className="content">
-            {this.renderView()}
+            {
+              this.state.isLoading
+              ? <div className="spinner"><img src="assets/137424-red-color-red.gif" /></div>
+              : this.renderView()
+            }   
           </div>
 
           <div className="footer"></div>
