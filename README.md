@@ -1,6 +1,6 @@
 # Price-Drop
 ### About
-Price-Drop is a price monitoring application that checks a popular electronics site multiple times a day for any price updates on its televisions. The data is scraped using the Nightmare.js browser-automation library. All the pricing data is stored in a MySQL database. If there is a price drop or increase, that particular television is flagged.
+Price-Drop is a price monitoring application that checks a popular electronics site multiple times a day for any price updates on its televisions. The data is scraped using the Nightmare.js browser-automation library. All the pricing data is stored in a MySQL database. If there is a price drop or increase, that particular television is flagged and an email notification is sent.
 When the client section of the site is visited through a browser, the pricing data is retrieved from the database and is displayed in graph and table formats.
 Only CSS3 was used for styling.
 
@@ -18,9 +18,11 @@ Only CSS3 was used for styling.
 * DataTables
 * Babel.js
 
-### Future Additions
-* Email Notification of price drops
-* Additional sites for data scraping
+### Deployment
+* Heroku
+* AWS RDS MySQL
+[pdrop.herokuapp.com
+](https://pdrop.herokuapp.com)
 
 ### Data Scraper:
 [github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js
