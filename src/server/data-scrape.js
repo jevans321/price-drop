@@ -1,5 +1,5 @@
 import Nightmare from 'nightmare';
-
+import path from 'path';
 const useragents = ['Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3015.0 Safari/537.36'];
 
 function getRandomInt(min, max) {
@@ -8,9 +8,10 @@ function getRandomInt(min, max) {
 // nightmare is a simple wrapper for PhantomJS for web automation and scraping
 export function* run() {
   let nightmare = Nightmare({
-    show: false,
+    show: true,
     webPreferences: {
-      webSecurity: true
+      webSecurity: true,
+      preload: path.resolve(__dirname + '/preload.js')
     }
   });
 
