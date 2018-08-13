@@ -21,8 +21,7 @@ Only CSS3 was used for styling.
 ### Deployment
 * Heroku
 * AWS RDS MySQL
-[pdrop.herokuapp.com
-](https://pdrop.herokuapp.com)
+* [pdrop.herokuapp.com](https://pdrop.herokuapp.com)
 
 ### Data Scraper:
 [github.com/jevans321/Price-Drop/blob/master/src/server/data-scrape.js
