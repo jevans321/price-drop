@@ -130,8 +130,6 @@ class App extends React.Component {
         // if model key equals obj model name
         if(key === obj.model && !map2[key+date]) {
           map2[key+date] = true;
-          let graphDate = date.slice(0, date.length - 5).replace('/', '-');
-          //console.log('graph date: ', graphDate);
           obj.dateClient = this.getClientDate(obj.date, 'ld');;
           return obj;
         }
