@@ -6,7 +6,6 @@ import http from "http";
 
 const sendmail = require('sendmail')();
 const bodyParser = require('body-parser');
-// const expressMongoDb = require('express-mongo-db');
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -14,25 +13,19 @@ setInterval(function() {
   http.get("http://pdrop.herokuapp.com");
 }, 300000); // every 5 minutes (300000)
 
-
 app.use(express.static(__dirname + '/../../react-client/dist/'));
-
 
 /* ON PAGE LOAD */
 /** CREATE GET '/' handler to retrieve price data from db to send to client **/
 app.get('/data', async (req, res) => {
   // Query db for All records
   let result = await getAll();
-  //console.log('Get all result: ', result);
   // Send all records in response
-
   res.send(result);
 
 });
 
-/** CREATE A SCHEDULED RUN FUNCTION HERE, to run scraper function 3+ times/daily  **/
-// Every 6 Hours
-
+/** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
 setInterval(() => {
   vo(run)(async (err, result) => {
     let newScrapedDataObject = result;
@@ -91,17 +84,18 @@ setInterval(() => {
           let priceDifference = lastPrice - priceNum;
           // send email notification
           sendmail({
-            from: 'otisred056@gmail.com',
+            from: 'you@pricedrop.com',
             to: 'james3780@gmail.com',
-            subject: `PRICE DROP ${title} Drop $${priceDifference} Current ${price}`,
-            html: `TV: ${title}
-            Model: ${model}
-            Price has dropped ${priceDifference} dollars.
-            Previous price ${lastPrice}, current price ${priceNum}`,
+            subject: `PRICE DROP: ${title.slice(0,9)} Drop: $${priceDifference} Current: $${price}`,
+            html: `<h3>PRICE DROP ALERT</h3>
+            <p>TV: ${title}</p>
+            <p>Model: ${model}</p>
+            <p style="font-size: large">Price Drop: <strong>$${priceDifference}</strong></p>
+            <p style="font-size: large">Previous Price: <strong>$${lastPrice}</strong>, Current Price: <strong><span style="color: red">$${priceNum}</span></strong></p>`,
           }, function(err, reply) {
             console.log(err && err.stack);
             console.dir(reply);
-        });
+          });
         // if new price is greater than last price in prices table
         } else if(priceNum > lastPrice) {
           // set drop flag to '2' color orange(?)
