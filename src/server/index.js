@@ -9,9 +9,9 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 const app = express();
 
-// setInterval(function() {
-//   http.get("http://pdrop.herokuapp.com");
-// }, 300000); // every 5 minutes (300000)
+setInterval(function() {
+  http.get("http://pdrop.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 app.use(express.static(__dirname + '/../../react-client/dist/'));
 
