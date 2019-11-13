@@ -54,6 +54,7 @@ function addPrice(modelNameParam, priceParam, flagParam) {
 /* Retrieve ALL records from 'prices' table */
 // Return records
 function getAll() {
+  console.log("inside getAll function");
   return knex('prices')
   .innerJoin('models', 'prices.model_id', 'models.id')
   .select('prices.price', 'prices.flag', 'prices.date', 'models.model', 'models.title')

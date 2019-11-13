@@ -26,7 +26,7 @@ class App extends React.Component {
     this.setState({ isLoading: true });
     axios.get('/data')
       .then((response) => {
-        // console.log("The Data: ", response.data);
+        console.log("The Data: ", response.data);
         // 'response.data' is an array of objects
         this.setState({
           data: response.data
