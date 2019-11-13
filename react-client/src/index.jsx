@@ -27,7 +27,7 @@ class App extends React.Component {
     axios.get('/data')
       .then((response) => {
         console.log("The Data: ", response.data);
-        // 'response.data' is an array of objects
+        // 'response.data'is an array of objects
         this.setState({
           data: response.data
         });
