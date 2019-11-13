@@ -69,6 +69,10 @@ function getLastPrice(modelIdParam) {
     Raw query:
     * knex.raw('select price from prices where id = (select  MAX(id) from prices where model_id = ?', modelIdParam)
   * */
+
+  /* The record with the max ID (MAX(id)) is being selected.
+     Since there could be multiple records that share the same model ID input val,
+     The most recent record is being selected because it will have the largest ID num */
   return knex('prices')
   .where({id: knex('prices').select(knex.raw('MAX(id)')).where({model_id: modelIdParam})})
   .select('price')

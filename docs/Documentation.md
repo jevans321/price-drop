@@ -1,5 +1,23 @@
 
+### Local URL
+http://127.0.0.1:8080/
+
+### Remote URL
+https://pdrop.herokuapp.com/
+
 ## Command Line Commands
+
+### Run Scrape
+* To run the scraper, in index.js you must comment out the setInterval() wrapper so the "vo" function can run immediately.
+Run through package.json
+$ npm run scrape
+
+Run directly through command line.
+$ node ./node_modules/babel-cli/bin/babel-node.js --presets es2015 ./src/server/index.js
+
+In "data-scrape.js"
+  let nightmare = Nightmare({
+      show: true, <--- make sure this is set to true to see pop-up window during scrape
 
 ### Start Server
 Start Server
@@ -7,7 +25,10 @@ $ npm run react-dev
 $ npm run server-dev
 
 Kill Port if it won't stop running
+Port 3000
 $ sudo lsof -t -i tcp:3000 | xargs kill -9
+Port 8080
+$ sudo lsof -t -i tcp:8080 | xargs kill -9
 
 ### Stop Server
 `mysql.server stop`
@@ -23,8 +44,11 @@ Local
 `mysql -u root`
 Remote
 `mysql -u user -p password`
+CLEARDB MySQL
+`mysql -h us-cdbr-iron-east-05.cleardb.net/heroku_671b31482e21aac?reconnect=true -P 3306 -u b03870f42b4558 -p`
 RDS MySQL
 `mysql -h [RDS_host] -P 3306 -u [user] -p`
+
 
 ## Errors
 ### Console error when nightmare loads browser
