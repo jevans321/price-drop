@@ -25,10 +25,10 @@ $ npm run react-dev
 $ npm run server-dev
 
 Kill Port if it won't stop running
-Port 3000
-$ sudo lsof -t -i tcp:3000 | xargs kill -9
 Port 8080
 $ sudo lsof -t -i tcp:8080 | xargs kill -9
+Port 3000
+$ sudo lsof -t -i tcp:3000 | xargs kill -9
 
 ### Stop Server
 `mysql.server stop`
@@ -45,7 +45,8 @@ Local
 Remote
 `mysql -u user -p password`
 CLEARDB MySQL
-`mysql -h us-cdbr-iron-east-05.cleardb.net/heroku_671b31482e21aac?reconnect=true -P 3306 -u b03870f42b4558 -p`
+`mysql -h us-cdbr-iron-east-05.cleardb.net -u env.CLEARDB_USER -p`
+
 RDS MySQL
 `mysql -h [RDS_host] -P 3306 -u [user] -p`
 

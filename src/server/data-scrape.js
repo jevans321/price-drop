@@ -15,7 +15,8 @@ export function* run() {
     }
   });
 
-  // https://www.target.com/c/tvs-home-theater-electronics/55-inch/-/N-5xtdjZ6hv8p?type=products&lnk=55TVs
+  // https://www.target.com/c/tvs-home-theater-electronics/55-inch/-/N-5xtdjZ6hv8pZ5y4wrZ5y720Z55jxl?type=products&lnk=55TVs&Nao=0
+  // https://www.walmart.com/browse/electronics/all-tvs/samsung/50-59-/3944_1060825_447913?cat_id=3944_1060825_447913&facet=brand%3ASamsung%7C%7Cbrand%3ASony%7C%7Ctv_screen_size_range_new%3A50%22+-+59%22%7C%7Cbrand%3AVIZIO
   let result = yield nightmare
     .useragent(useragents[getRandomInt(0, useragents.length - 1)])
     .goto('https://www.bestbuy.com/site/tvs/55-inch-tvs/pcmcat1514910111435.c?id=pcmcat1514910111435&qp=brand_facet%3DBrand~Samsung%5Ebrand_facet%3DBrand~Sony%5Ebrand_facet%3DBrand~VIZIO')
@@ -28,15 +29,6 @@ export function* run() {
     .wait(2000)
 
     .evaluate(() => {
-      // let hash = {};
-      // // traverse DOM tree and add properties to hash
-      // $('.ProductCard-infoSection-3496717424').each(function() {
-      //   let tvCard = $(this).find('.ProductName-title-3304727955').text();
-      //     hash[tvCard] = {
-      //       "title": $(this).find('.ProductName-title-3304727955').text(),
-      //       "price": $(this).find('.Product-card__price-current').text()
-      //     };
-      // })
 
       /*  Creating a hashTable...
             Key: Model Number
