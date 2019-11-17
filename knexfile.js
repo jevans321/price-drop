@@ -1,6 +1,7 @@
 const path = require('path');
 const BASE_PATH = path.join(__dirname, 'src', 'server', 'db');
 require('dotenv').config();
+console.log("DB LINK: ", process.env.CLEARDB_DATABASE_URL);
 module.exports = {
   test: {
     client: 'mysql',
