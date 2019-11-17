@@ -43,7 +43,7 @@
     "knex": "^0.20.1",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
-    "nightmare": "^3.0.2",
+    "nightmare": "^3.0.1",
     "numbro": "^2.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
