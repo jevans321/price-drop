@@ -14,7 +14,7 @@ module.exports = {
   },
   development: {
     client: 'mysql',  
-    connection: `mysql://${process.env.CLEARDB_USER}:${process.env.CLEARDB_PASS}@${process.env.CLEARDB_HOST}/heroku_671b31482e21aac?reconnect=true`,
+    connection: process.env.CLEARDB_DATABASE_URL,
     migrations: {
       directory: path.join(BASE_PATH, 'migrations')
     },
