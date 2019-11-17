@@ -59,7 +59,7 @@ function getAll() {
   .innerJoin('models', 'prices.model_id', 'models.id')
   .select('prices.price', 'prices.flag', 'prices.date', 'models.model', 'models.title')
   .catch(err => {
-    console.log('Error: ', err);
+    console.log('GetAll Error: ', err);
   });
 }
 
