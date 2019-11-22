@@ -39,7 +39,7 @@
     "express": "4.15.0",
     "express-mongo-db": "2.0.4",
     "fs": "0.0.1-security",
-    "jquery": "3.3.1",
+    "jquery": "3.4.1",
     "knex": "0.20.1",
     "mongoose": "4.8.6",
     "mysql": "2.13.0",
