@@ -35,7 +35,7 @@
     "datatables.net-responsive": "^2.2.3",
     "datatables.net-responsive-dt": "^2.2.3",
     "dotenv": "^5.0.1",
-    "electron": "^1.8.4",
+    "electron": "1.8.4",
     "express": "^4.15.0",
     "express-mongo-db": "^2.0.4",
     "fs": "^0.0.1-security",
