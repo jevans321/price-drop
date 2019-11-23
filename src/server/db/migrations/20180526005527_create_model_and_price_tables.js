@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.string('model', 60).notNullable();
     table.string('title', 200).notNullable();
     table.string('image', 30);
+    table.dateTime('date').notNullable();
   })
   .createTable('prices', function(table) {
     table.increments('id').primary().notNullable();
