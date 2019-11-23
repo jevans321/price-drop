@@ -40,7 +40,7 @@ export function* run() {
           hash[tvModel] = {
             "title": $(this).find('.sku-header').text(),
             "model": tvModel,
-            "price": $(this).find('.priceView-customer-price span').first().text()
+            "price": $(this).find('.priceView-customer-price span').first().text() || "$2"
           };
       })
       return hash;
