@@ -69,6 +69,7 @@ setInterval(() => {
               "price": $(this).find('.priceView-customer-price span').first().text()
             };
         })
+        console.log("Hash...........: ", hash);
         return hash;
       })
     .end()
