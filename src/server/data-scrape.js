@@ -45,7 +45,9 @@ export function* run() {
       })
       return hash;
     })
-
-  yield nightmare.end();
+    yield nightmare.end()
+    .catch(error => {
+      return error;
+    })
   return result;
 };
