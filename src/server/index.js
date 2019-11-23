@@ -72,7 +72,7 @@ setInterval(() => {
         return hash;
       })
     .end()
-    .then(result => {
+    .then(async (result) => {
 
       let newScrapedDataObject = result;
       // Scrape site, get new data
