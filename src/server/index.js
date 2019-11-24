@@ -127,7 +127,7 @@ setInterval(() => {
         console.log('Add New Price Success: ', resultAddPrice);
       }
   });
-}, 100000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
+}, 8000000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
 
 
 
