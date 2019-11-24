@@ -1,13 +1,28 @@
 import { modelExists, addModel, addPrice, getAll, getLastPrice } from './db/queries/index';
-import { run } from './data-scrape';
+// import { run } from './data-scrape';
 import express from 'express';
-import vo from 'vo';
+// import vo from 'vo';
 import http from "http";
 
 const sendmail = require('sendmail')();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 const app = express();
+import Nightmare from 'nightmare';
+import path from 'path';
+const useragents = ['Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3015.0 Safari/537.36'];
+
+function getRandomInt(min, max) {
+  return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+const nightmare = Nightmare({
+  show: true,
+  webPreferences: {
+    webSecurity: true,
+    preload: path.resolve(__dirname + '/preload.js')
+  }
+});
 
 /* Re-activate Heroku Dynos
   The @setInterval callback function below calls the site every 5 minutes
@@ -33,14 +48,36 @@ app.get('/data', async (req, res) => {
 
 /** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
 setInterval(() => {
-  vo(run)(async (err, result) => {
-    if(err !== null) {
-      console.log("Scrape Error: ", err);
-      return;
-    }
+    nightmare
+    .useragent(useragents[getRandomInt(0, useragents.length - 1)])
+    .goto('https://www.bestbuy.com/site/tvs/55-inch-tvs/pcmcat1514910111435.c?id=pcmcat1514910111435&qp=brand_facet%3DBrand~Samsung%5Ebrand_facet%3DBrand~Sony%5Ebrand_facet%3DBrand~VIZIO')
+    .wait(2000)
+  
+    // scroll down page bit by bit to allow content to load
+    .scrollTo(16000, 0)
+    .wait(2000)
+    .scrollTo(19000, 0)
+    .wait(2000)
+    .evaluate(() => {
+  
+        let hash = {};
+        let skuItems = document.querySelectorAll('.sku-item');
+        skuItems.forEach(item => {
+          let tvModel = item.querySelector('.sku-value').innerText
+            hash[tvModel] = {
+              "title": item.querySelector('.sku-header').innerText,
+              "model": tvModel,
+              "price": item.querySelector('.priceView-customer-price span').innerText || "$2"
+            };
+        });
+        return hash;
+      })
+    .end()
+    .then(result => {
+
       let newScrapedDataObject = result;
       // Scrape site, get new data
-      console.dir('This is VO result: ', result);
+      console.log('This is VO result: ', result);
       // Loop through scraped data object
       for(let tvProp in newScrapedDataObject) {
         // Add data to db
@@ -126,8 +163,11 @@ setInterval(() => {
         let resultAddPrice = await addPrice(model, price, flag);
         console.log('Add New Price Success: ', resultAddPrice);
       }
-  });
-}, 8000000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
+    })
+    .catch(error => {
+      console.error('Scrape Error: ', error)
+    })
+}, 175000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
 
 
 
