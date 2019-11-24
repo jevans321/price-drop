@@ -47,7 +47,7 @@ app.get('/data', async (req, res) => {
 });
 
 /** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
-// setInterval(() => {
+setInterval(() => {
     nightmare
     .useragent(useragents[getRandomInt(0, useragents.length - 1)])
     .goto('https://www.bestbuy.com/site/tvs/55-inch-tvs/pcmcat1514910111435.c?id=pcmcat1514910111435&qp=brand_facet%3DBrand~Samsung%5Ebrand_facet%3DBrand~Sony%5Ebrand_facet%3DBrand~VIZIO')
@@ -171,7 +171,7 @@ app.get('/data', async (req, res) => {
     .catch(error => {
       console.error('Scrape Error: ', error)
     })
-// }, 100000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
+}, 100000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
 
 
 
