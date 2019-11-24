@@ -63,11 +63,17 @@ setInterval(() => {
         let hash = {};
         let skuItems = document.querySelectorAll('.sku-item');
         skuItems.forEach(item => {
-          let tvModel = item.querySelector('.sku-value').innerText
+          let tvModel = item.querySelector('.sku-value').innerText;
+          let price = null;
+          if(item.querySelector('.priceView-customer-price span').innerText !== null) {
+            price = item.querySelector('.priceView-customer-price span').innerText
+          } else {
+            price = "$2";
+          }
             hash[tvModel] = {
               "title": item.querySelector('.sku-header').innerText,
               "model": tvModel,
-              "price": item.querySelector('.priceView-customer-price span').innerText || "$2"
+              "price": price
             };
         });
         return hash;
