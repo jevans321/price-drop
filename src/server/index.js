@@ -79,9 +79,8 @@ setInterval(() => {
           let lastPriceObj = await getLastPrice(modelIdFromDb);
           let lastPrice = lastPriceObj[0].price;
           console.log('Retrieved last price: ', lastPriceObj[0].price);
-          // if last price or current price is null skip to adding the values to the DB
-          if((lastPrice === null || lastPrice.length === null) || (price === null || price.length === null)) {
-          
+          // if last price or current price is not available skip to adding the values to the DB
+          if(lastPrice !== "not available" && price !== "not available") {
             // convert stringified prices to numbers
             let priceNum = Number(price.replace(/[$,]/g, ""));
             lastPrice = Number(lastPrice.replace(/[$,]/g, ""));
@@ -118,17 +117,17 @@ setInterval(() => {
         }
         //////////// Add latest tv price to DB  ////////////
         // if model already exists and no price was scraped, don't add empty price to DB
-        if(modelExistsInModelsTable && (price === null || price.length === null)) {
+        if(modelExistsInModelsTable && price === "not available") {
           console.log('Empty Price, no price added to DB');
-          continue;
+          return;
         }
         // invoke 'addPrice()' query with model name, price, and flag passed      
         let resultAddPrice = await addPrice(model, price, flag);
         console.log('Add New Price Success: ', resultAddPrice);
       }
   });
-}, 300000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
-
+}, 2000000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
+// 2000000 33min
 
 
 const server = app.listen(port, function() {

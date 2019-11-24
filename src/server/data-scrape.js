@@ -53,7 +53,7 @@ export function* run() {
         if(item.querySelector('.priceView-customer-price span')) {
           price = item.querySelector('.priceView-customer-price span').innerText
         } else {
-          price = "$2";
+          price = "not available";
         }
           hash[tvModel] = {
             "title": item.querySelector('.sku-header').innerText,

@@ -68,8 +68,8 @@ class App extends React.Component {
               },
               { "data": "price",
                 "render": function ( data, type, row, meta ) {
-                  if(data) return "$" + data;
-                  return "not available";
+                  return data === "not available" ? data : "$" + data;
+
                 }
                },
               { "data": "flag",
