@@ -8,7 +8,7 @@ function getRandomInt(min, max) {
 // nightmare is a simple wrapper for PhantomJS for web automation and scraping
 export function* run() {
   let nightmare = Nightmare({
-    show: true,
+    show: false,
     webPreferences: {
       webSecurity: true,
       preload: path.resolve(__dirname + '/preload.js')
