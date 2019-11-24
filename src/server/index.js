@@ -34,8 +34,8 @@ app.get('/data', async (req, res) => {
 /** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
 setInterval(() => {
   vo(run)(async (result) => {
-    if(result.ReferenceError) {
-      console.log("Scrape Error: ", result.ReferenceError);
+    if(result.ReferenceError || result.Error) {
+      console.log("Scrape Error: ", result.ReferenceError || result.Error);
       return;
     }
       let newScrapedDataObject = result;
