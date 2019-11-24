@@ -34,7 +34,10 @@ app.get('/data', async (req, res) => {
 /** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
 setInterval(() => {
   vo(run)(async (result) => {
-    try {
+    if(result.ReferenceError) {
+      console.log("Scrape Error: ", result.ReferenceError);
+      return;
+    }
       let newScrapedDataObject = result;
       // Scrape site, get new data
       console.log('This is VO result: ', result);
@@ -123,9 +126,6 @@ setInterval(() => {
         let resultAddPrice = await addPrice(model, price, flag);
         console.log('Add New Price Success: ', resultAddPrice);
       }
-    } catch (err){
-      console.dir("Error from vo catch", err);
-    }
   });
 }, 100000); // 21600000, Every 6 Hours | *15000000 Every 4.16 hours | 300K, Every 5 minutes | 150K, 2.5min 75K 1.25 min
 
