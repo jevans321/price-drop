@@ -34,16 +34,35 @@ export function* run() {
             Key: Model Number
             Value: is an object that contains the title, model, and price
       */
+      // let hash = {};
+      // $('.sku-item').each(function() {
+      //   let tvModel = $(this).find('.sku-value').first().text().trim(); // the trim() removes whitespace from both ends
+      //     hash[tvModel] = {
+      //       "title": $(this).find('.sku-header').text(),
+      //       "model": tvModel,
+      //       "price": $(this).find('.priceView-customer-price span').first().text()
+      //     };
+      // })
+      // return hash;
+
       let hash = {};
-      $('.sku-item').each(function() {
-        let tvModel = $(this).find('.sku-value').first().text().trim(); // the trim() removes whitespace from both ends
+      let skuItems = document.querySelectorAll('.sku-item');
+      skuItems.forEach(item => {
+        let tvModel = item.querySelector('.sku-value').innerText;
+        let price = null;
+        if(item.querySelector('.priceView-customer-price span')) {
+          price = item.querySelector('.priceView-customer-price span').innerText
+        } else {
+          price = "$2";
+        }
           hash[tvModel] = {
-            "title": $(this).find('.sku-header').text(),
+            "title": item.querySelector('.sku-header').innerText,
             "model": tvModel,
-            "price": $(this).find('.priceView-customer-price span').first().text()
+            "price": price
           };
-      })
+      });
       return hash;
+
     })
 
     yield nightmare.end()
