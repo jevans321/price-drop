@@ -34,10 +34,10 @@ app.get('/data', async (req, res) => {
 /** SCHEDULED SCRAPE FUNCTION, to run scraper function 3+ times/daily  **/
 setInterval(() => {
   vo(run)(async (result) => {
-    if(result.ReferenceError || result.Error) {
-      console.log("Scrape Error: ", result.ReferenceError || result.Error);
-      return;
-    }
+    // if(result.ReferenceError || result.Error) {
+    //   console.log("Scrape Error: ", result.ReferenceError || result.Error);
+    //   return;
+    // }
       let newScrapedDataObject = result;
       // Scrape site, get new data
       console.dir('This is VO result: ', result);
