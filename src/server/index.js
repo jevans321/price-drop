@@ -40,7 +40,7 @@ setInterval(() => {
     }
       let newScrapedDataObject = result;
       // Scrape site, get new data
-      console.log('This is VO result: ', result);
+      console.dir('This is VO result: ', result);
       // Loop through scraped data object
       for(let tvProp in newScrapedDataObject) {
         // Add data to db
