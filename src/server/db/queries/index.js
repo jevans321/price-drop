@@ -44,8 +44,8 @@ function addModel(modelParam, titleParam, imageParam) {
 function addPrice(modelNameParam, priceParam, flagParam) {
   // console.log('3: inside addPrice');
   return knex('prices')
-  .returning(['id', 'model_id', 'price', 'flag', 'date']) // these columns do not return in MySQL
-  .insert({model_id: knex('models').where({model: modelNameParam}).select('models.id'), price: priceParam, flag: flagParam, date: new Date()})
+  .returning(['id', 'model_id', 'price', 'flag']) // these columns do not return in MySQL
+  .insert({model_id: knex('models').where({model: modelNameParam}).select('models.id'), price: priceParam, flag: flagParam})
   .catch(err => {
     console.log('Error: ', err);
   });
@@ -57,7 +57,7 @@ function getAll() {
   console.log("inside getAll function");
   return knex('prices')
   .innerJoin('models', 'prices.model_id', 'models.id')
-  .select('prices.price', 'prices.flag', 'prices.date', 'models.model', 'models.title')
+  .select('prices.price', 'prices.flag', 'prices.created_at', 'models.model', 'models.title')
   .catch(err => {
     console.log('GetAll Error: ', err);
   });
