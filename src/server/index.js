@@ -66,7 +66,6 @@ setInterval(async () => {
       let newScrapedDataObject = result;
 
       console.log('This is Puppeteer result: ', result);
-      return;
       // Loop through scraped data object
       for(let tvProp in newScrapedDataObject) {
         // Add data to db
