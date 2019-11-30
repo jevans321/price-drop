@@ -2,7 +2,8 @@
   "name": "price-drop",
   "version": "1.0.0",
   "engines": {
-    "node": "8.7.0"
+    "node": "8.7.0",
+    "npm": "5.7.1"
   },
   "description": "",
   "main": "index.js",
