@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon src/server/index.js --exec babel-node --presets es2015",
+    "server-dev": "src/server/index.js --exec babel-node --presets es2015",
     "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js",
     "scrape": "babel-node --presets es2015 src/server/index.js"
   },
@@ -25,7 +25,7 @@
     "chai-http": "^4.0.0",
     "css-loader": "^1.0.0",
     "mocha": "^5.2.0",
-    "nodemon": "1.14.3",
+    "nodemon": "^1.14.3",
     "webpack": "^2.2.1"
   },
   "dependencies": {

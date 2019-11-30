@@ -20,7 +20,7 @@ export function* run() {
   let result = yield nightmare
     .useragent(useragents[getRandomInt(0, useragents.length - 1)])
     .goto('https://www.bestbuy.com/site/tvs/55-inch-tvs/pcmcat1514910111435.c?id=pcmcat1514910111435&qp=brand_facet%3DBrand~Samsung%5Ebrand_facet%3DBrand~Sony%5Ebrand_facet%3DBrand~VIZIO')
-    .wait(6000)
+    .wait(5000)
 
     // scroll down page bit by bit to allow content to load
   	.scrollTo(16000, 0)
