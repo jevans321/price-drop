@@ -1,7 +1,7 @@
 import { modelExists, addModel, addPrice, getAll, getLastPrice } from './db/queries/index';
-import { run } from './data-scrape';
+// import { run } from './data-scrape';
 import express from 'express';
-import vo from 'vo';
+// import vo from 'vo';
 import http from "http";
 import puppeteer from 'puppeteer';
 
