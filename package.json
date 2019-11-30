@@ -40,7 +40,7 @@
     "express-mongo-db": "2.0.4",
     "fs": "0.0.1-security",
     "jquery": "3.3.1",
-    "knex": "0.14.6",
+    "knex": "0.20.3",
     "mongoose": "^4.8.6",
     "mysql": "2.15.0",
     "nightmare": "3.0.1",
