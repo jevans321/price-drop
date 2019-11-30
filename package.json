@@ -35,21 +35,19 @@
     "datatables.net-responsive": "^2.2.3",
     "datatables.net-responsive-dt": "^2.2.3",
     "dotenv": "^5.0.1",
-    "electron": "1.8.7",
     "express": "^4.15.0",
     "express-mongo-db": "^2.0.4",
     "fs": "^0.0.1-security",
     "jquery": "^3.3.1",
-    "knex": "^0.20.1",
+    "knex": "^0.20.3",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
-    "nightmare": "3.0.1",
     "numbro": "^2.1.0",
+    "puppeteer": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-loader": "^2.4.5",
     "recharts": "^1.0.1",
-    "sendmail": "^1.4.1",
-    "vo": "4.0.2"
+    "sendmail": "^1.4.1"
   }
 }
