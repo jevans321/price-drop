@@ -50,15 +50,15 @@ setInterval(async () => {
           let tvModel = item.querySelector('.sku-value').innerText;
           let price = null;
           if(item.querySelector('.priceView-customer-price span')) {
-            price = item.querySelector('.priceView-customer-price span').innerText
+            price = item.querySelector('.priceView-customer-price span').innerText;
           } else {
             price = "not available";
           }
-            hash[tvModel] = {
-              "title": item.querySelector('.sku-header').innerText,
-              "model": tvModel,
-              "price": price
-            };
+          hash[tvModel] = {
+            "title": item.querySelector('.sku-header').innerText,
+            "model": tvModel,
+            "price": price
+          };
         });
         return hash;
       });

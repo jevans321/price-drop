@@ -138,12 +138,12 @@ class App extends React.Component {
           based on that tv models array. */
     for(let key in map) {
       let modelArr = this.state.data.filter((obj) => {
-        let date = this.getClientDate(obj.date, 'l');
+        let date = this.getClientDate(obj.created_at, 'l');
         date = date.split(',')[0];
         // if model key equals obj model name
         if(key === obj.model && !map2[key+date]) {
           map2[key+date] = true;
-          obj.dateClient = this.getClientDate(obj.date, 'ld');;
+          obj.dateClient = this.getClientDate(obj.created_at, 'ld');;
           return obj;
         }
       });
@@ -181,8 +181,8 @@ class App extends React.Component {
     let result = [];
     let hash = {};
     for(let record of this.state.data) {
-      let monthNum = record.date[5]+ record.date[6]
-      if(record.date === '2018-06-24T23:28:27.000Z') record.flag = 1;
+      let monthNum = record.created_at[5] + record.created_at[6];
+      if(record.created_at === '2018-06-24T23:28:27.000Z') record.flag = 1;
       if(record.flag === 1) {
         if(hash[monthNum]) {
           hash[monthNum].priceDrops++;
