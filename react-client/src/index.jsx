@@ -57,7 +57,7 @@ class App extends React.Component {
               { "data": "title" },
               { "data": "model" },
               // https://datatables.net/reference/option/columns.type
-              { "type": "date", "data": "date",
+              { "type": "date", "data": "created_at",
               // https://datatables.net/reference/option/columns.render
                 "render": function ( data, type, row, meta ) {
                   let milliseconds = Date.parse(data);
@@ -138,6 +138,7 @@ class App extends React.Component {
           based on that tv models array. */
     for(let key in map) {
       let modelArr = this.state.data.filter((obj) => {
+        console.log("State Obj & created_at prop: ", obj, obj.created_at);
         let date = this.getClientDate(obj.created_at, 'l');
         date = date.split(',')[0];
         // if model key equals obj model name
@@ -156,8 +157,11 @@ class App extends React.Component {
   }
   /* getClientDate is a helper function that converts UTC/Server time to client time */
   getClientDate(date, type) {
+    
     let milliseconds = Date.parse(date);
+    console.log("Inside getClientDate millisecs var: ", milliseconds);
     let clientDate = new Date(milliseconds);
+    console.log("Inside getClientDate clientDate var: ", clientDate);
     if(type === 'l') return clientDate.toLocaleString();
     else if(type === 'ld') return clientDate.toLocaleDateString("en-US");
   }
