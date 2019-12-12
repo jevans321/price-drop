@@ -20,7 +20,6 @@ import { PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer } fro
   
     return (
       <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" style={{fontSize:'30px'}} fill={fill}>{payload.month}</text>
         <Sector
           cx={cx}
           cy={cy}
@@ -39,6 +38,7 @@ import { PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer } fro
           outerRadius={outerRadius + 10}
           fill={fill}
         />
+        <text x={cx} y={cy} dy={8} textAnchor="middle" style={{fontSize:'30px'}} fill="black">{payload.month}</text>
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
         <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`Price Drops: ${value}`}</text>
