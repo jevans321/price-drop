@@ -4,7 +4,7 @@ import { PieChart, Pie, Sector, Cell, Tooltip, Legend, ResponsiveContainer } fro
  
 
   const renderActiveShape = (props) => {
-    console.log("props...... :", props);
+    // console.log("props...... :", props);
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
       fill, payload, percent, value } = props;

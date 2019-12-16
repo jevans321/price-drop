@@ -10,25 +10,31 @@ https://pdrop.herokuapp.com/
 ### Run Scrape
 * To run the scraper, in index.js you must comment out the setInterval() wrapper so the "vo" function can run immediately.
 Run through package.json
-$ npm run scrape
+`$ npm run scrape`
 
 Run directly through command line.
-$ node ./node_modules/babel-cli/bin/babel-node.js --presets es2015 ./src/server/index.js
+`$ node ./node_modules/babel-cli/bin/babel-node.js --presets es2015 ./src/server/index.js`
 
 In "data-scrape.js"
   let nightmare = Nightmare({
       show: true, <--- make sure this is set to true to see pop-up window during scrape
 
+### ENV Variables, How To Update on Heroku
+You have to update the heroku config file, which is bascially the remote .env file
+https://devcenter.heroku.com/articles/config-vars
+In Heroku CLI:
+`$ heroku config`
+
 ### Start Server
 Start Server
-$ npm run react-dev
-$ npm run server-dev
+`$ npm run react-dev`
+`$ npm run server-dev`
 
 Kill Port if it won't stop running
 Port 8080
-$ sudo lsof -t -i tcp:8080 | xargs kill -9
+`$ sudo lsof -t -i tcp:8080 | xargs kill -9`
 Port 3000
-$ sudo lsof -t -i tcp:3000 | xargs kill -9
+`$ sudo lsof -t -i tcp:3000 | xargs kill -9`
 
 ### Stop Server
 `mysql.server stop`
@@ -52,6 +58,19 @@ RDS MySQL
 
 
 ## Errors
+### Heroku pdrop App is not updating after deploy
+* If you update a React .jsx file, the bundle.js file must auto-update as well.
+  To auto update the bundle.js file you must run `npm run react-dev` to run the webpack to rebuild the bundle file.
+  Then you must push the updated bundle.js file to github.
+  If this is not done heroku will not display the updated jsx files.
+
+### Puppeteer:
+### When running headless, e.g. 'headless: true'
+### Error: Navigation timeout of 30000 ms exceeded
+Added the below line to set the timeout to 0, inside the scraping function in index.js:
+`await page.setDefaultNavigationTimeout(0);`
+
+### Nightmare
 ### Console error when nightmare loads browser
 `Cannot assign to read only property 'onbeforeunload' of object`
 Fix Reference: https://github.com/segmentio/nightmare/issues/1082

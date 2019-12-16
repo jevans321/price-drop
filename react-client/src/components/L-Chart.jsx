@@ -10,7 +10,7 @@ export default class LChart extends Component {
 
 
   render() {
-    let results = this.props.filterPrice;
+    let results = Object.values(this.props.filterPrice);
     // if(!results.length) {
     //   return <div>Loading...</div>;
     // }
