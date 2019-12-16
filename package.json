@@ -8,10 +8,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node --presets es2015 src/server/index.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon src/server/index.js --exec babel-node --presets es2015",
-    "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js",
-    "scrape": "babel-node --presets es2015 src/server/index.js"
+    "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js"
   },
   "author": "Beth Johnson",
   "license": "ISC",
