@@ -2,13 +2,14 @@
   "name": "price-drop",
   "version": "1.0.0",
   "engines": {
-    "node": "8.7.0"
+    "node": "10.15.3",
+    "npm": "6.4.1"
   },
   "description": "",
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon src/server/index.js --exec babel-node --presets es2015",
+    "server-dev": "src/server/index.js --exec babel-node --presets es2015",
     "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js",
     "scrape": "babel-node --presets es2015 src/server/index.js"
   },
@@ -29,7 +30,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "3.0.0",
+    "bcrypt": "3.0.4",
     "body-parser": "^1.19.0",
     "bookshelf": "^1.0.1",
     "bookshelf-secure-password": "^5.0.0",
