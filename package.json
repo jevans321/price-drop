@@ -2,7 +2,7 @@
   "name": "price-drop",
   "version": "1.0.0",
   "engines": {
-    "node": "^8.7.0"
+    "node": "8.7.0"
   },
   "description": "",
   "main": "index.js",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.19.0",
     "bookshelf": "^1.0.1",
     "bookshelf-secure-password": "^5.0.0",
