@@ -178,31 +178,20 @@ nav div {
     cursor: pointer;
 }
 
-#status {
-    position: absolute;
-    top: 11px;
-    left: 10px;
-    width: 500px;
-    background-color: #0000005c;
-}
-
 header {
     /* background-color: lightcoral; */
     position: relative;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
-    background-color: #464646;
-    background-image:url("./assets/photo-1550557019-3436df3d1c67.jpeg");
-    background-size: cover;
+    height: 50vh; */
+    /* background-color: #464646; */
+    /* background-color: white; */
+    /* background-image:url("./assets/photo-1550557019-3436df3d1c67.jpeg"); */
+    /* background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
-
-/* header h2 {
-    color: white;
-} */
 
 header div {
     /* position: absolute;
@@ -212,9 +201,25 @@ header div {
     font-size: medium;
 }
 
-header > div {
+#status {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 500px;
+    background-color: #0000005c;
+}
+
+#signup {
+    position: absolute;
+    top: 38%;
+    left: 14%;
     background-color: #00000033;
     padding: 8px 8px;
+}
+
+#signup-title {
+    font-size: larger;
+    font-weight: 600;
 }
 
 header #signup-btn {

@@ -1,13 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Header from './Header.jsx';
+// import Header from './Header.jsx';
 import Navigation from './Navigation.jsx';
 import NavContentPublic from './NavContentPublic.jsx';
 import Modal from './Modal.jsx';
 import Login from './Login.jsx';
-
-// import './Home.css';
-// import '../../dist/Home.css';
+import Carousel from './Carousel.jsx';
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,15 +31,23 @@ class Home extends React.Component {
 
 
   render() {
+
     return (
       <div>
         <Navigation>
           <NavContentPublic homeHistory={this.props.history} showModal={this.showModal} />
         </Navigation>
-        <Header
-          homeHistory={this.props.history}
-          showModal={this.showModal}
-        />
+        <header>
+          <Carousel />
+          <div id="status">
+            <p>12/16/2019: Currently adding features to this landing page and the authorized members section after login.
+            Users are still able to test the sign up with a testing email, log in, and view the current dash board</p>
+          </div>
+          <div id="signup">
+            <div><div id="signup-title">Be among the first</div> to find out when a television has a drop in price.</div>
+            <div id="signup-btn" onClick={() => this.showModal('register')}>Sign up</div>
+          </div>
+        </header>
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <Login
             homeHistory={this.props.history}
